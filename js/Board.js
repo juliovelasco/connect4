@@ -1,6 +1,6 @@
 function Board() {
-  this.colunms = 6;
-  this.rows = 7;
+  this.columns = 7;
+  this.rows = 6;
   this.holes = this.createHoles();
 }
 
@@ -12,21 +12,21 @@ function Board() {
 Board.prototype.createHoles = function() {
 
   const holes = [];
-  for(let x = 0; x < this.rows; x++){
-    let rows = [];
-    for(let y = 0; y < this.colunms; y++){
+  for(let x = 0; x < this.columns; x++){
+    let columns = [];
+    for(let y = 0; y < this.rows; y++){
       const hole = new Hole(x,y);
-      rows.push(hole);
+      columns.push(hole);
     }
-    holes.push(rows);
+    holes.push(columns);
   }
   return holes;
 }
 
 Board.prototype.drawHTMLBoard = function() {
 
-  for(let x = 0; x < this.rows; x++){
-    for(let y = 0; y < this.colunms; y++){
+  for(let x = 0; x < this.columns; x++){
+    for(let y = 0; y < this.rows; y++){
       this.holes[x][y].drawSVGHoles();
     }
   }

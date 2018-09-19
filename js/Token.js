@@ -69,5 +69,5 @@ Token.prototype.dropToken = function(hole) {
   }, 750, 'easeOutBounce');
 
   this.isTokenDropped = true;
-  hole.token = true;
+  hole.token = this.owner;
 }
