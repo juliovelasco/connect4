@@ -1,3 +1,5 @@
+const dropSound = new Audio('../assets/audio/coin_drop.mp3');
+
 function Token(index, owner) {
   this.owner = owner;
   this.id = `token-${index}-${owner.id}`;
@@ -39,6 +41,7 @@ Token.prototype.drawHTMLToken = function() {
 Token.prototype.moveLeft = function() {
 
   if(this.columnLocation > 0){
+    //moveSound.play();
     this.htmlToken.style.left = this.offsetLeft - 76;
     this.columnLocation -= 1;
   }
@@ -51,6 +54,7 @@ Token.prototype.moveLeft = function() {
 Token.prototype.moveRight = function() {
 
   if(this.columnLocation < 6){
+    //moveSound.play();
     this.htmlToken.style.left = this.offsetLeft + 76;
     this.columnLocation += 1;
   }
@@ -62,12 +66,13 @@ Token.prototype.moveRight = function() {
  * @param   {function} reset  - The reset function to call after the drop animation has completed.
  */
 
-Token.prototype.dropToken = function(hole) {
+Token.prototype.dropToken = function(hole,reset) {
+
   //add the bounce animation for each token.
   $(this.htmlToken).animate({
       top: (hole.y * hole.diameter)
-  }, 750, 'easeOutBounce');
-
-  this.isTokenDropped = true;
+  }, 750, 'easeOutBounce',reset);
   hole.token = this.owner;
+  dropSound.play();
+  this.isTokenDropped = true;
 }
