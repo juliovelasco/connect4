@@ -1,4 +1,4 @@
-const dropSound = new Audio('../connect4/assets/audio/coin_drop.mp3');
+const dropSound = new Audio('../audio/coin_drop.mp3');
 
 function Token(index, owner) {
   this.owner = owner;
